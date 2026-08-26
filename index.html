@@ -232,7 +232,7 @@
       const HOUR = 3600000;
       const MINUTE = 60000;
 
-      const days = Math.floor(diff / DAY);
+      const days = Math.ceil(diff / DAY);
       diff %= DAY;
 
       const hours = Math.floor(diff / HOUR);
