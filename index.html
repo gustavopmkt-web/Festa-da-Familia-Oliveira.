@@ -1,270 +1,880 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#17130d">
 
-    <meta property="og:title" content="Festa da Família Oliveira">
-    <meta property="og:description" content="A contagem começou. Porque algumas histórias merecem ser lembradas desde o começo.">
-    <meta property="og:image" content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./preview-whatsapp.png">
-    <meta property="og:url" content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./">
-    <meta property="og:type" content="website">
-    
-    <title>Festa da Família Oliveira</title>
-
-  
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Festa da Família Oliveira">
-    <meta name="twitter:description" content="A contagem começou. Porque algumas histórias merecem ser lembradas desde o começo.">
-    <meta name="twitter:image" content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./preview-whatsapp.png">
-
-   
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&display=swap" rel="stylesheet">
-
-  <style>
-    :root {
-      --brown: #6f3218;
-      --brown-dark: #3b190d;
-      --ink: #17130d;
-      --cream: #f4dfb5;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #17130d;
-    }
-
-    body {
-      width: 100%;
-      font-family: "Roboto Slab", Georgia, serif;
-    }
-
-    /*
-      VERSÃO MOBILE
-      A página acompanha exatamente a proporção da arte:
-      953 x 1650
-    */
-    .page {
-      position: relative;
-      width: 100%;
-      max-width: 953px;
-      margin: 0 auto;
-      line-height: 1;
-      overflow: hidden;
-    }
-
-    .poster {
-      display: block;
-      width: 100%;
-      height: auto;
-      user-select: none;
-      pointer-events: none;
-    }
-
-    /*
-      BLOCO DO CONTADOR
-      A posição é relativa à própria imagem.
-      top: 28% coloca o número de dias entre os risquinhos.
-    */
-    .counter {
-      position: absolute;
-      top: 25%;
-      left: 48%;
-      width: 100%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    /* NÚMERO PRINCIPAL DE DIAS */
-    .days {
-      margin: 0;
-      font-size: clamp(110px, 20vw, 180px);
-      line-height: .82;
-      font-weight: 900;
-      letter-spacing: -.075em;
-      color: var(--brown);
-      -webkit-text-stroke: 1px rgba(55, 23, 10, .48);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.30),
-        0 2px 0 rgba(88,35,14,.75),
-        0 4px 7px rgba(0,0,0,.40),
-        0 8px 14px rgba(0,0,0,.22);
-    }
-
-    /* PALAVRA DIA / DIAS */
-    .days-label {
-      margin-top: 15px;
-      font-size: clamp(14px, 3.4vw, 25px);
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: .10em;
-      color: var(--ink);
-      transform: translateY(8px);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.32),
-        0 2px 4px rgba(0,0,0,.18);
-    }
-
-    /* HORAS / MINUTOS / SEGUNDOS */
-    .time {
-      width: min(68%, 520px);
-      margin: clamp(26px, 6vw, 48px) auto 0;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      align-items: start;
-    }
-
-    .unit {
-      position: relative;
-      min-width: 0;
-      padding: 0 clamp(4px, 1.2vw, 10px);
-    }
-
-    .unit + .unit::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 10%;
-      width: 2px;
-      height: 72%;
-      background: linear-gradient(
-        to bottom,
-        transparent,
-        rgba(111,50,24,.85),
-        transparent
-      );
-      box-shadow: 1px 0 2px rgba(255,255,255,.15);
-    }
-
-    /* NÚMEROS PEQUENOS */
-    .num {
-      display: block;
-      font-size: clamp(25px, 6.2vw, 48px);
-      line-height: .9;
-      font-weight: 900;
-      letter-spacing: -.04em;
-      color: var(--brown);
-      -webkit-text-stroke: .7px rgba(55,23,10,.42);
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.25),
-        0 2px 0 rgba(88,35,14,.62),
-        0 4px 7px rgba(0,0,0,.35);
-    }
-
-    /* HORAS / MINUTOS / SEGUNDOS */
-    .label {
-      display: block;
-      margin-top: 7px;
-      font-size: clamp(8px, 2.15vw, 16px);
-      line-height: 1;
-      font-weight: 900;
-      letter-spacing: .015em;
-      color: var(--ink);
-      white-space: nowrap;
-      text-shadow:
-        0 1px 0 rgba(255,255,255,.30),
-        0 2px 3px rgba(0,0,0,.18);
-    }
-
-    /* Ajuste fino para telas muito estreitas */
-    @media (max-width: 380px) {
-      .counter {
-        top: 27.8%;
-      }
-
-      .time {
-        width: 72%;
-      }
-
-      .days {
-        font-size: 17vw;
-      }
-    }
-  </style>
-</head>
-
-<body>
-  <main class="page">
-    <!-- TROQUE AQUI SE O NOME DO ARQUIVO DA ARTE FOR OUTRO -->
-    <img
-      class="poster"
-      src="arte-vertical.png"
-      alt="Festa da Família Oliveira"
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
     >
 
-    <section class="counter" aria-live="polite">
-      <div id="days" class="days">--</div>
-      <div id="daysLabel" class="days-label">DIAS</div>
+    <meta
+        name="theme-color"
+        content="#17130d"
+    >
 
-      <div class="time">
-        <div class="unit">
-          <span id="hours" class="num">00</span>
-          <span class="label">Horas</span>
-        </div>
+    <!-- PREVIEW DO WHATSAPP: MANTIDO -->
+    <meta
+        property="og:title"
+        content="Festa da Família Oliveira"
+    >
 
-        <div class="unit">
-          <span id="minutes" class="num">00</span>
-          <span class="label">Minutos</span>
-        </div>
+    <meta
+        property="og:description"
+        content="A contagem começou. Porque algumas histórias merecem ser lembradas desde o começo."
+    >
 
-        <div class="unit">
-          <span id="seconds" class="num">00</span>
-          <span class="label">Segundos</span>
-        </div>
-      </div>
-    </section>
-  </main>
+    <meta
+        property="og:image"
+        content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./preview-whatsapp.png"
+    >
 
-  <script>
-    /*
-      Festa:
-      06/09/2026 às 00:00
-      Horário de Brasília (-03:00)
-    */
-    const target = new Date("2026-09-06T00:00:00-03:00").getTime();
+    <meta
+        property="og:url"
+        content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./"
+    >
 
-    const $ = id => document.getElementById(id);
+    <meta
+        property="og:type"
+        content="website"
+    >
 
-    function pad(value) {
-      return String(value).padStart(2, "0");
-    }
 
-    function updateCountdown() {
-      let diff = Math.max(0, target - Date.now());
+    <title>Festa da Família Oliveira</title>
 
-      const DAY = 86400000;
-      const HOUR = 3600000;
-      const MINUTE = 60000;
 
-      const days = Math.ceil(diff / DAY);
-      diff %= DAY;
+    <!-- TWITTER / PREVIEW -->
+    <meta
+        name="twitter:card"
+        content="summary_large_image"
+    >
 
-      const hours = Math.floor(diff / HOUR);
-      diff %= HOUR;
+    <meta
+        name="twitter:title"
+        content="Festa da Família Oliveira"
+    >
 
-      const minutes = Math.floor(diff / MINUTE);
-      const seconds = Math.floor((diff % MINUTE) / 1000);
+    <meta
+        name="twitter:description"
+        content="A contagem começou. Porque algumas histórias merecem ser lembradas desde o começo."
+    >
 
-      $("days").textContent = days;
-      $("daysLabel").textContent = days === 1 ? "DIA" : "DIAS";
-      $("hours").textContent = pad(hours);
-      $("minutes").textContent = pad(minutes);
-      $("seconds").textContent = pad(seconds);
-    }
+    <meta
+        name="twitter:image"
+        content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./preview-whatsapp.png"
+    >
 
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-  </script>
+
+    <!-- FONTE -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <style>
+
+        /*
+        ==========================================================
+        PALETA
+        ==========================================================
+        */
+
+        :root {
+
+            --brown: #6f3218;
+
+            --brown-dark: #3b190d;
+
+            --ink: #17130d;
+
+        }
+
+
+        /*
+        ==========================================================
+        RESET
+        ==========================================================
+        */
+
+        * {
+
+            box-sizing: border-box;
+
+        }
+
+
+        html,
+        body {
+
+            margin: 0;
+
+            padding: 0;
+
+            background: #17130d;
+
+        }
+
+
+        body {
+
+            width: 100%;
+
+            font-family:
+                "Roboto Slab",
+                Georgia,
+                serif;
+
+        }
+
+
+        /*
+        ==========================================================
+        PÁGINA
+        ==========================================================
+        */
+
+        .page {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 1024px;
+
+            margin: 0 auto;
+
+            overflow: hidden;
+
+            line-height: 1;
+
+        }
+
+
+        /*
+        ==========================================================
+        ARTE PRINCIPAL
+        ==========================================================
+        
+        Basta substituir o arquivo "arte-vertical.png"
+        quando quiser trocar a arte.
+        */
+
+        .poster {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+
+            user-select: none;
+
+            pointer-events: none;
+
+        }
+
+
+        /*
+        ==========================================================
+        CONTADOR
+        ==========================================================
+        
+        O contador ocupa o espaço azul entre o "2" gigante
+        e a casa.
+
+        A posição foi pensada para reproduzir a composição
+        da arte de referência.
+        */
+
+        .counter {
+
+            position: absolute;
+
+            /*
+            Posição vertical do primeiro número
+            */
+
+            top: 15.4%;
+
+
+            /*
+            Centro horizontal do contador
+            */
+
+            left: 54.7%;
+
+
+            /*
+            Largura do bloco
+
+            Mantém os elementos concentrados,
+            sem ocupar o céu inteiro.
+            */
+
+            width: 19%;
+
+
+            transform: translateX(-50%);
+
+            text-align: center;
+
+            z-index: 2;
+
+            pointer-events: none;
+
+        }
+
+
+        /*
+        ==========================================================
+        CONTADOR VERTICAL
+        ==========================================================
+        */
+
+        .time {
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            width: 100%;
+
+        }
+
+
+        /*
+        ==========================================================
+        CADA UNIDADE
+        ==========================================================
+        */
+
+        .unit {
+
+            position: relative;
+
+            width: 100%;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            text-align: center;
+
+        }
+
+
+        /*
+        ==========================================================
+        NÚMEROS
+        ==========================================================
+        */
+
+        .num {
+
+            display: block;
+
+            margin: 0;
+
+            font-size:
+                clamp(
+                    42px,
+                    6.8vw,
+                    70px
+                );
+
+            line-height: .86;
+
+            font-weight: 900;
+
+            letter-spacing: -.055em;
+
+            color: var(--brown);
+
+
+            /*
+            Contorno discreto
+            */
+
+            -webkit-text-stroke:
+                1px
+                rgba(55, 23, 10, .48);
+
+
+            /*
+            Sombra igual à linguagem visual
+            da arte original
+            */
+
+            text-shadow:
+
+                0 1px 0
+                rgba(255,255,255,.28),
+
+                0 2px 0
+                rgba(88,35,14,.72),
+
+                0 4px 7px
+                rgba(0,0,0,.42),
+
+                0 8px 13px
+                rgba(0,0,0,.20);
+
+        }
+
+
+        /*
+        ==========================================================
+        HORAS / MINUTOS / SEGUNDOS
+        ==========================================================
+        */
+
+        .label {
+
+            display: block;
+
+            margin-top: 7px;
+
+            font-size:
+                clamp(
+                    11px,
+                    2vw,
+                    18px
+                );
+
+            line-height: 1;
+
+            font-weight: 900;
+
+            letter-spacing: .005em;
+
+            color: var(--ink);
+
+            white-space: nowrap;
+
+
+            text-shadow:
+
+                0 1px 0
+                rgba(255,255,255,.32),
+
+                0 2px 3px
+                rgba(0,0,0,.20);
+
+        }
+
+
+        /*
+        ==========================================================
+        SEPARADOR
+        ==========================================================
+        
+        Linha horizontal + ponto central.
+
+        Ele aparece entre:
+        
+        Horas
+        ─────●─────
+        Minutos
+
+        e
+
+        Minutos
+        ─────●─────
+        Segundos
+        */
+
+        .unit:not(:last-child)::after {
+
+            content: "";
+
+            display: block;
+
+            width: 72%;
+
+            height: 2px;
+
+            margin-top:
+                clamp(
+                    14px,
+                    2.1vw,
+                    22px
+                );
+
+            margin-bottom:
+                clamp(
+                    17px,
+                    2.4vw,
+                    25px
+                );
+
+
+            /*
+            Linha
+            */
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent 0%,
+                    rgba(111,50,24,.85) 20%,
+                    rgba(111,50,24,.95) 43%,
+                    rgba(111,50,24,.95) 57%,
+                    rgba(111,50,24,.85) 80%,
+                    transparent 100%
+                );
+
+
+            /*
+            Sombra suave
+            */
+
+            box-shadow:
+                0 1px 1px
+                rgba(255,255,255,.15);
+
+        }
+
+
+        /*
+        ==========================================================
+        PONTINHO CENTRAL
+        ==========================================================
+        
+        Criamos o ponto por meio de um pseudo-elemento
+        adicional no próprio separador.
+        */
+
+        .unit:not(:last-child)::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+
+            /*
+            posição do ponto sobre a linha
+            */
+
+            bottom:
+                clamp(
+                    -9px,
+                    -1.1vw,
+                    -7px
+                );
+
+            width:
+                clamp(
+                    7px,
+                    1vw,
+                    10px
+                );
+
+            height:
+                clamp(
+                    7px,
+                    1vw,
+                    10px
+                );
+
+            border-radius: 50%;
+
+            background: var(--brown);
+
+            box-shadow:
+
+                0 1px 2px
+                rgba(0,0,0,.35),
+
+                0 0 0 1px
+                rgba(59,25,13,.30);
+
+        }
+
+
+        /*
+        ==========================================================
+        AJUSTE PARA CELULAR
+        ==========================================================
+        */
+
+        @media (max-width: 600px) {
+
+            .counter {
+
+                top: 15.5%;
+
+                left: 54.7%;
+
+                width: 20%;
+
+            }
+
+
+            .num {
+
+                font-size: 7vw;
+
+            }
+
+
+            .label {
+
+                font-size: 2.1vw;
+
+            }
+
+        }
+
+
+        /*
+        ==========================================================
+        TELAS MUITO ESTREITAS
+        ==========================================================
+        */
+
+        @media (max-width: 380px) {
+
+            .counter {
+
+                top: 15.7%;
+
+                left: 54.5%;
+
+                width: 21%;
+
+            }
+
+
+            .num {
+
+                font-size: 7.4vw;
+
+            }
+
+
+            .label {
+
+                font-size: 2.3vw;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <main class="page">
+
+
+        <!--
+        ========================================================
+        ARTE
+        ========================================================
+        -->
+
+        <img
+            class="poster"
+            src="arte-vertical.png"
+            alt="Festa da Família Oliveira"
+        >
+
+
+        <!--
+        ========================================================
+        CONTADOR
+        ========================================================
+        
+        IMPORTANTE:
+
+        O número de DIAS NÃO está aqui.
+
+        O "2" gigante pertence à própria imagem.
+
+        O código controla apenas:
+
+        HORAS
+        MINUTOS
+        SEGUNDOS
+        -->
+
+        <section
+            class="counter"
+            aria-live="polite"
+        >
+
+            <div class="time">
+
+
+                <!-- HORAS -->
+
+                <div class="unit">
+
+                    <span
+                        id="hours"
+                        class="num"
+                    >
+                        00
+                    </span>
+
+                    <span
+                        class="label"
+                    >
+                        Horas
+                    </span>
+
+                </div>
+
+
+                <!-- MINUTOS -->
+
+                <div class="unit">
+
+                    <span
+                        id="minutes"
+                        class="num"
+                    >
+                        00
+                    </span>
+
+                    <span
+                        class="label"
+                    >
+                        Minutos
+                    </span>
+
+                </div>
+
+
+                <!-- SEGUNDOS -->
+
+                <div class="unit">
+
+                    <span
+                        id="seconds"
+                        class="num"
+                    >
+                        00
+                    </span>
+
+                    <span
+                        class="label"
+                    >
+                        Segundos
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <script>
+
+        /*
+        ==========================================================
+        DATA DA FESTA
+        ==========================================================
+
+        06/09/2026 às 00:00
+        Horário de Brasília (-03:00)
+        */
+
+        const target =
+            new Date(
+                "2026-09-06T00:00:00-03:00"
+            ).getTime();
+
+
+        /*
+        ==========================================================
+        ACESSO AOS ELEMENTOS
+        ==========================================================
+        */
+
+        const $ = id =>
+            document.getElementById(id);
+
+
+        /*
+        ==========================================================
+        FORMATAÇÃO
+        ==========================================================
+        */
+
+        function pad(value) {
+
+            return String(value)
+                .padStart(2, "0");
+
+        }
+
+
+        /*
+        ==========================================================
+        CONTADOR
+        ==========================================================
+        */
+
+        function updateCountdown() {
+
+
+            /*
+            Diferença entre agora e a festa
+            */
+
+            let diff =
+                Math.max(
+                    0,
+                    target - Date.now()
+                );
+
+
+            /*
+            Unidades de tempo
+            */
+
+            const DAY =
+                86400000;
+
+            const HOUR =
+                3600000;
+
+            const MINUTE =
+                60000;
+
+
+            /*
+            ======================================================
+            DIAS
+            ======================================================
+
+            O número de dias é calculado aqui porque a lógica
+            precisa separar os dias das horas.
+
+            MAS ELE NÃO É MOSTRADO PELO CÓDIGO.
+
+            O "2" gigante que está na imagem é quem representa
+            visualmente os dias.
+            */
+
+            const days =
+                Math.ceil(
+                    diff / DAY
+                );
+
+
+            /*
+            ======================================================
+            RESTANTE DO DIA
+            ======================================================
+
+            Depois de separar os dias, calculamos apenas o
+            restante em horas, minutos e segundos.
+            */
+
+            diff %= DAY;
+
+
+            const hours =
+                Math.floor(
+                    diff / HOUR
+                );
+
+
+            diff %= HOUR;
+
+
+            const minutes =
+                Math.floor(
+                    diff / MINUTE
+                );
+
+
+            diff %= MINUTE;
+
+
+            const seconds =
+                Math.floor(
+                    diff / 1000
+                );
+
+
+            /*
+            ======================================================
+            ATUALIZAÇÃO VISUAL
+            ======================================================
+            */
+
+            $("hours").textContent =
+                pad(hours);
+
+
+            $("minutes").textContent =
+                pad(minutes);
+
+
+            $("seconds").textContent =
+                pad(seconds);
+
+        }
+
+
+        /*
+        ==========================================================
+        PRIMEIRA ATUALIZAÇÃO
+        ==========================================================
+        */
+
+        updateCountdown();
+
+
+        /*
+        ==========================================================
+        ATUALIZA A CADA SEGUNDO
+        ==========================================================
+        */
+
+        setInterval(
+            updateCountdown,
+            1000
+        );
+
+    </script>
+
+
 </body>
+
 </html>
