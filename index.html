@@ -15,7 +15,12 @@
         content="#17130d"
     >
 
-    <!-- PREVIEW DO WHATSAPP: MANTIDO -->
+
+    <!-- =====================================================
+         PREVIEW DO WHATSAPP
+         MANTIDO EXATAMENTE COMO NO SITE ORIGINAL
+         ===================================================== -->
+
     <meta
         property="og:title"
         content="Festa da Família Oliveira"
@@ -45,7 +50,10 @@
     <title>Festa da Família Oliveira</title>
 
 
-    <!-- TWITTER / PREVIEW -->
+    <!-- =====================================================
+         TWITTER / COMPARTILHAMENTO
+         ===================================================== -->
+
     <meta
         name="twitter:card"
         content="summary_large_image"
@@ -67,7 +75,10 @@
     >
 
 
-    <!-- FONTE -->
+    <!-- =====================================================
+         FONTE
+         ===================================================== -->
+
     <link
         rel="preconnect"
         href="https://fonts.googleapis.com"
@@ -87,11 +98,9 @@
 
     <style>
 
-        /*
-        ==========================================================
-        PALETA
-        ==========================================================
-        */
+        /* ==================================================
+           PALETA
+           ================================================== */
 
         :root {
 
@@ -104,16 +113,12 @@
         }
 
 
-        /*
-        ==========================================================
-        RESET
-        ==========================================================
-        */
+        /* ==================================================
+           RESET
+           ================================================== */
 
         * {
-
             box-sizing: border-box;
-
         }
 
 
@@ -141,11 +146,9 @@
         }
 
 
-        /*
-        ==========================================================
-        PÁGINA
-        ==========================================================
-        */
+        /* ==================================================
+           PÁGINA
+           ================================================== */
 
         .page {
 
@@ -164,14 +167,14 @@
         }
 
 
-        /*
-        ==========================================================
-        ARTE PRINCIPAL
-        ==========================================================
-        
-        Basta substituir o arquivo "arte-vertical.png"
-        quando quiser trocar a arte.
-        */
+        /* ==================================================
+           ARTE PRINCIPAL
+
+           Para trocar a arte no futuro:
+           basta substituir o arquivo
+
+           arte-vertical.png
+           ================================================== */
 
         .poster {
 
@@ -188,49 +191,27 @@
         }
 
 
-        /*
-        ==========================================================
-        CONTADOR
-        ==========================================================
-        
-        O contador ocupa o espaço azul entre o "2" gigante
-        e a casa.
+        /* ==================================================
+           CONTADOR
 
-        A posição foi pensada para reproduzir a composição
-        da arte de referência.
-        */
+           POSIÇÃO:
+           abaixo de "É AMANHÃ!"
+           acima do logo.
+
+           O contador é horizontal.
+           ================================================== */
 
         .counter {
 
             position: absolute;
 
-            /*
-            Posição vertical do primeiro número
-            */
+            top: 32.2%;
 
-            top: 15.4%;
+            left: 50%;
 
-
-            /*
-            Centro horizontal do contador
-            */
-
-            left: 54.7%;
-
-
-            /*
-            Largura do bloco
-
-            Mantém os elementos concentrados,
-            sem ocupar o céu inteiro.
-            */
-
-            width: 19%;
-
+            width: 67%;
 
             transform: translateX(-50%);
-
-            text-align: center;
 
             z-index: 2;
 
@@ -239,53 +220,77 @@
         }
 
 
-        /*
-        ==========================================================
-        CONTADOR VERTICAL
-        ==========================================================
-        */
+        /* ==================================================
+           LINHA DOS TRÊS TEMPOS
+           ================================================== */
 
         .time {
 
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
-
             width: 100%;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            align-items: start;
 
         }
 
 
-        /*
-        ==========================================================
-        CADA UNIDADE
-        ==========================================================
-        */
+        /* ==================================================
+           CADA UNIDADE
+           ================================================== */
 
         .unit {
 
             position: relative;
 
-            width: 100%;
-
-            display: flex;
-
-            flex-direction: column;
-
-            align-items: center;
+            min-width: 0;
 
             text-align: center;
+
+            padding: 0 8px;
 
         }
 
 
-        /*
-        ==========================================================
-        NÚMEROS
-        ==========================================================
-        */
+        /* ==================================================
+           SEPARADORES VERTICAIS
+           ================================================== */
+
+        .unit + .unit::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            top: 8%;
+
+            width: 2px;
+
+            height: 78%;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(111,50,24,.85),
+                    transparent
+                );
+
+            box-shadow:
+                1px 0 2px
+                rgba(255,255,255,.15);
+
+        }
+
+
+        /* ==================================================
+           NÚMEROS
+           ================================================== */
 
         .num {
 
@@ -295,9 +300,9 @@
 
             font-size:
                 clamp(
-                    42px,
-                    6.8vw,
-                    70px
+                    34px,
+                    6vw,
+                    62px
                 );
 
             line-height: .86;
@@ -309,42 +314,31 @@
             color: var(--brown);
 
 
-            /*
-            Contorno discreto
-            */
-
             -webkit-text-stroke:
                 1px
-                rgba(55, 23, 10, .48);
+                rgba(55,23,10,.48);
 
-
-            /*
-            Sombra igual à linguagem visual
-            da arte original
-            */
 
             text-shadow:
 
                 0 1px 0
-                rgba(255,255,255,.28),
+                rgba(255,255,255,.30),
 
                 0 2px 0
-                rgba(88,35,14,.72),
+                rgba(88,35,14,.75),
 
                 0 4px 7px
-                rgba(0,0,0,.42),
+                rgba(0,0,0,.40),
 
-                0 8px 13px
-                rgba(0,0,0,.20);
+                0 8px 14px
+                rgba(0,0,0,.22);
 
         }
 
 
-        /*
-        ==========================================================
-        HORAS / MINUTOS / SEGUNDOS
-        ==========================================================
-        */
+        /* ==================================================
+           HORAS / MINUTOS / SEGUNDOS
+           ================================================== */
 
         .label {
 
@@ -354,16 +348,16 @@
 
             font-size:
                 clamp(
-                    11px,
-                    2vw,
-                    18px
+                    10px,
+                    1.9vw,
+                    17px
                 );
 
             line-height: 1;
 
             font-weight: 900;
 
-            letter-spacing: .005em;
+            letter-spacing: .01em;
 
             color: var(--ink);
 
@@ -373,211 +367,77 @@
             text-shadow:
 
                 0 1px 0
-                rgba(255,255,255,.32),
+                rgba(255,255,255,.30),
 
                 0 2px 3px
-                rgba(0,0,0,.20);
+                rgba(0,0,0,.18);
 
         }
 
 
-        /*
-        ==========================================================
-        SEPARADOR
-        ==========================================================
-        
-        Linha horizontal + ponto central.
-
-        Ele aparece entre:
-        
-        Horas
-        ─────●─────
-        Minutos
-
-        e
-
-        Minutos
-        ─────●─────
-        Segundos
-        */
-
-        .unit:not(:last-child)::after {
-
-            content: "";
-
-            display: block;
-
-            width: 72%;
-
-            height: 2px;
-
-            margin-top:
-                clamp(
-                    14px,
-                    2.1vw,
-                    22px
-                );
-
-            margin-bottom:
-                clamp(
-                    17px,
-                    2.4vw,
-                    25px
-                );
-
-
-            /*
-            Linha
-            */
-
-            background:
-                linear-gradient(
-                    to right,
-                    transparent 0%,
-                    rgba(111,50,24,.85) 20%,
-                    rgba(111,50,24,.95) 43%,
-                    rgba(111,50,24,.95) 57%,
-                    rgba(111,50,24,.85) 80%,
-                    transparent 100%
-                );
-
-
-            /*
-            Sombra suave
-            */
-
-            box-shadow:
-                0 1px 1px
-                rgba(255,255,255,.15);
-
-        }
-
-
-        /*
-        ==========================================================
-        PONTINHO CENTRAL
-        ==========================================================
-        
-        Criamos o ponto por meio de um pseudo-elemento
-        adicional no próprio separador.
-        */
-
-        .unit:not(:last-child)::before {
-
-            content: "";
-
-            position: absolute;
-
-            left: 50%;
-
-            transform:
-                translateX(-50%);
-
-
-            /*
-            posição do ponto sobre a linha
-            */
-
-            bottom:
-                clamp(
-                    -9px,
-                    -1.1vw,
-                    -7px
-                );
-
-            width:
-                clamp(
-                    7px,
-                    1vw,
-                    10px
-                );
-
-            height:
-                clamp(
-                    7px,
-                    1vw,
-                    10px
-                );
-
-            border-radius: 50%;
-
-            background: var(--brown);
-
-            box-shadow:
-
-                0 1px 2px
-                rgba(0,0,0,.35),
-
-                0 0 0 1px
-                rgba(59,25,13,.30);
-
-        }
-
-
-        /*
-        ==========================================================
-        AJUSTE PARA CELULAR
-        ==========================================================
-        */
+        /* ==================================================
+           CELULAR
+           ================================================== */
 
         @media (max-width: 600px) {
 
             .counter {
 
-                top: 15.5%;
+                top: 32.1%;
 
-                left: 54.7%;
-
-                width: 20%;
+                width: 69%;
 
             }
 
 
             .num {
 
-                font-size: 7vw;
+                font-size: 6.8vw;
 
             }
 
 
             .label {
 
-                font-size: 2.1vw;
+                font-size: 2vw;
 
             }
 
         }
 
 
-        /*
-        ==========================================================
-        TELAS MUITO ESTREITAS
-        ==========================================================
-        */
+        /* ==================================================
+           TELAS MUITO PEQUENAS
+           ================================================== */
 
         @media (max-width: 380px) {
 
             .counter {
 
-                top: 15.7%;
+                top: 32%;
 
-                left: 54.5%;
+                width: 72%;
 
-                width: 21%;
+            }
+
+
+            .unit {
+
+                padding: 0 4px;
 
             }
 
 
             .num {
 
-                font-size: 7.4vw;
+                font-size: 7.2vw;
 
             }
 
 
             .label {
 
-                font-size: 2.3vw;
+                font-size: 2.2vw;
 
             }
 
@@ -594,11 +454,9 @@
     <main class="page">
 
 
-        <!--
-        ========================================================
-        ARTE
-        ========================================================
-        -->
+        <!-- =================================================
+             ARTE
+             ================================================= -->
 
         <img
             class="poster"
@@ -607,23 +465,16 @@
         >
 
 
-        <!--
-        ========================================================
-        CONTADOR
-        ========================================================
-        
-        IMPORTANTE:
+        <!-- =================================================
+             CONTADOR
+             
+             SOMENTE:
+             HORAS
+             MINUTOS
+             SEGUNDOS
 
-        O número de DIAS NÃO está aqui.
-
-        O "2" gigante pertence à própria imagem.
-
-        O código controla apenas:
-
-        HORAS
-        MINUTOS
-        SEGUNDOS
-        -->
+             O "2" DE DIAS ESTÁ INCORPORADO NA ARTE.
+             ================================================= -->
 
         <section
             class="counter"
@@ -701,15 +552,19 @@
     </main>
 
 
+    <!-- =====================================================
+         CONTADOR
+         ===================================================== -->
+
     <script>
 
         /*
-        ==========================================================
+        ======================================================
         DATA DA FESTA
-        ==========================================================
 
         06/09/2026 às 00:00
         Horário de Brasília (-03:00)
+        ======================================================
         */
 
         const target =
@@ -719,9 +574,9 @@
 
 
         /*
-        ==========================================================
-        ACESSO AOS ELEMENTOS
-        ==========================================================
+        ======================================================
+        ELEMENTOS
+        ======================================================
         */
 
         const $ = id =>
@@ -729,9 +584,9 @@
 
 
         /*
-        ==========================================================
+        ======================================================
         FORMATAÇÃO
-        ==========================================================
+        ======================================================
         */
 
         function pad(value) {
@@ -743,17 +598,12 @@
 
 
         /*
-        ==========================================================
-        CONTADOR
-        ==========================================================
+        ======================================================
+        ATUALIZAÇÃO DO CONTADOR
+        ======================================================
         */
 
         function updateCountdown() {
-
-
-            /*
-            Diferença entre agora e a festa
-            */
 
             let diff =
                 Math.max(
@@ -761,10 +611,6 @@
                     target - Date.now()
                 );
 
-
-            /*
-            Unidades de tempo
-            */
 
             const DAY =
                 86400000;
@@ -777,74 +623,80 @@
 
 
             /*
-            ======================================================
+            --------------------------------------------------
             DIAS
-            ======================================================
 
-            O número de dias é calculado aqui porque a lógica
-            precisa separar os dias das horas.
+            O número é calculado porque precisamos retirar
+            os dias da diferença.
 
-            MAS ELE NÃO É MOSTRADO PELO CÓDIGO.
+            Ele NÃO é exibido pelo código.
 
-            O "2" gigante que está na imagem é quem representa
+            O "2" gigante existente na arte representa
             visualmente os dias.
+            --------------------------------------------------
             */
 
             const days =
-                Math.ceil(
-                    diff / DAY
-                );
+                Math.floor(diff / DAY);
 
 
             /*
-            ======================================================
-            RESTANTE DO DIA
-            ======================================================
-
-            Depois de separar os dias, calculamos apenas o
-            restante em horas, minutos e segundos.
+            Remove os dias completos
             */
 
-            diff %= DAY;
-
-
-            const hours =
-                Math.floor(
-                    diff / HOUR
-                );
-
-
-            diff %= HOUR;
-
-
-            const minutes =
-                Math.floor(
-                    diff / MINUTE
-                );
-
-
-            diff %= MINUTE;
-
-
-            const seconds =
-                Math.floor(
-                    diff / 1000
-                );
+            diff -=
+                days * DAY;
 
 
             /*
-            ======================================================
-            ATUALIZAÇÃO VISUAL
-            ======================================================
+            --------------------------------------------------
+            HORAS
+            --------------------------------------------------
+            */
+
+            const hours =
+                Math.floor(diff / HOUR);
+
+
+            diff -=
+                hours * HOUR;
+
+
+            /*
+            --------------------------------------------------
+            MINUTOS
+            --------------------------------------------------
+            */
+
+            const minutes =
+                Math.floor(diff / MINUTE);
+
+
+            diff -=
+                minutes * MINUTE;
+
+
+            /*
+            --------------------------------------------------
+            SEGUNDOS
+            --------------------------------------------------
+            */
+
+            const seconds =
+                Math.floor(diff / 1000);
+
+
+            /*
+            --------------------------------------------------
+            ATUALIZA A TELA
+            --------------------------------------------------
             */
 
             $("hours").textContent =
                 pad(hours);
 
-
             $("minutes").textContent =
                 pad(minutes);
-
 
             $("seconds").textContent =
                 pad(seconds);
@@ -853,18 +705,14 @@
 
 
         /*
-        ==========================================================
-        PRIMEIRA ATUALIZAÇÃO
-        ==========================================================
+        PRIMEIRA EXECUÇÃO
         */
 
         updateCountdown();
 
 
         /*
-        ==========================================================
         ATUALIZA A CADA SEGUNDO
-        ==========================================================
         */
 
         setInterval(
@@ -874,6 +722,31 @@
 
     </script>
 
+
+    <!-- =====================================================
+         CLOUDFLARE WEB ANALYTICS
+
+         ATENÇÃO:
+
+         NÃO coloque um token inventado aqui.
+
+         Depois de criar o site no Cloudflare Web Analytics,
+         substitua o trecho abaixo pelo snippet fornecido
+         pelo próprio Cloudflare.
+
+         Exemplo oficial:
+
+         <script
+             type="module"
+             src="https://static.cloudflareinsights.com/beacon.min.js"
+             data-cf-beacon='{"token":"SEU_TOKEN"}'>
+         </script>
+
+         O Cloudflare orienta colocar esse snippet antes
+         da tag </body>.
+         ===================================================== -->
+
+    <!-- COLE AQUI O SNIPPET DO CLOUDFLARE -->
 
 </body>
 
