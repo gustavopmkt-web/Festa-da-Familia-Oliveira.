@@ -18,7 +18,6 @@
 
     <!-- =====================================================
          PREVIEW DO WHATSAPP
-         MANTIDO EXATAMENTE COMO NO SITE ORIGINAL
          ===================================================== -->
 
     <meta
@@ -47,11 +46,8 @@
     >
 
 
-    <title>Festa da Família Oliveira</title>
-
-
     <!-- =====================================================
-         TWITTER / COMPARTILHAMENTO
+         TWITTER
          ===================================================== -->
 
     <meta
@@ -73,6 +69,9 @@
         name="twitter:image"
         content="https://gustavopmkt-web.github.io/Festa-da-Familia-Oliveira./preview-whatsapp.png"
     >
+
+
+    <title>Festa da Família Oliveira</title>
 
 
     <!-- =====================================================
@@ -169,11 +168,6 @@
 
         /* ==================================================
            ARTE PRINCIPAL
-
-           Para trocar a arte no futuro:
-           basta substituir o arquivo
-
-           arte-vertical.png
            ================================================== */
 
         .poster {
@@ -193,25 +187,48 @@
 
         /* ==================================================
            CONTADOR
+           
+           NOVA POSIÇÃO:
 
-           POSIÇÃO:
-           abaixo de "É AMANHÃ!"
-           acima do logo.
+           ACIMA DO "É"
 
-           O contador é horizontal.
+           O contador fica horizontal.
            ================================================== */
 
         .counter {
 
             position: absolute;
 
-            top: 32.2%;
+
+            /*
+            Posição vertical.
+
+            O valor foi escolhido para colocar o contador
+            na faixa de céu acima do "É".
+            */
+
+            top: 10.0%;
+
+
+            /*
+            Centralização horizontal.
+            */
 
             left: 50%;
 
-            width: 67%;
 
-            transform: translateX(-50%);
+            /*
+            Largura do conjunto.
+            */
+
+            width: 62%;
+
+
+            transform:
+                translateX(-50%);
+
+
+            text-align: center;
 
             z-index: 2;
 
@@ -221,7 +238,7 @@
 
 
         /* ==================================================
-           LINHA DOS TRÊS TEMPOS
+           LINHA DOS TRÊS CONTADORES
            ================================================== */
 
         .time {
@@ -239,7 +256,7 @@
 
 
         /* ==================================================
-           CADA UNIDADE
+           CADA BLOCO
            ================================================== */
 
         .unit {
@@ -248,9 +265,11 @@
 
             min-width: 0;
 
-            text-align: center;
+            padding:
+                0
+                clamp(3px, 1vw, 10px);
 
-            padding: 0 8px;
+            text-align: center;
 
         }
 
@@ -273,13 +292,15 @@
 
             height: 78%;
 
+
             background:
                 linear-gradient(
                     to bottom,
                     transparent,
-                    rgba(111,50,24,.85),
+                    rgba(111,50,24,.82),
                     transparent
                 );
+
 
             box-shadow:
                 1px 0 2px
@@ -300,9 +321,9 @@
 
             font-size:
                 clamp(
-                    34px,
-                    6vw,
-                    62px
+                    32px,
+                    5.7vw,
+                    58px
                 );
 
             line-height: .86;
@@ -331,7 +352,7 @@
                 rgba(0,0,0,.40),
 
                 0 8px 14px
-                rgba(0,0,0,.22);
+                rgba(0,0,0,.20);
 
         }
 
@@ -348,8 +369,8 @@
 
             font-size:
                 clamp(
-                    10px,
-                    1.9vw,
+                    9px,
+                    1.75vw,
                     17px
                 );
 
@@ -383,16 +404,16 @@
 
             .counter {
 
-                top: 32.1%;
+                top: 10.2%;
 
-                width: 69%;
+                width: 66%;
 
             }
 
 
             .num {
 
-                font-size: 6.8vw;
+                font-size: 6.3vw;
 
             }
 
@@ -414,30 +435,32 @@
 
             .counter {
 
-                top: 32%;
+                top: 10.4%;
 
-                width: 72%;
+                width: 70%;
 
             }
 
 
             .unit {
 
-                padding: 0 4px;
+                padding:
+                    0
+                    3px;
 
             }
 
 
             .num {
 
-                font-size: 7.2vw;
+                font-size: 6.8vw;
 
             }
 
 
             .label {
 
-                font-size: 2.2vw;
+                font-size: 2.15vw;
 
             }
 
@@ -456,6 +479,9 @@
 
         <!-- =================================================
              ARTE
+
+             Para trocar a arte no futuro, basta substituir
+             o arquivo arte-vertical.png.
              ================================================= -->
 
         <img
@@ -467,13 +493,13 @@
 
         <!-- =================================================
              CONTADOR
-             
+
              SOMENTE:
              HORAS
              MINUTOS
              SEGUNDOS
 
-             O "2" DE DIAS ESTÁ INCORPORADO NA ARTE.
+             O "2" gigante está dentro da própria arte.
              ================================================= -->
 
         <section
@@ -626,23 +652,19 @@
             --------------------------------------------------
             DIAS
 
-            O número é calculado porque precisamos retirar
-            os dias da diferença.
+            Calculamos os dias para separar o restante.
 
-            Ele NÃO é exibido pelo código.
+            O valor NÃO aparece no HTML.
 
-            O "2" gigante existente na arte representa
-            visualmente os dias.
+            O "2" gigante da arte é quem mostra os dias.
             --------------------------------------------------
             */
 
             const days =
-                Math.floor(diff / DAY);
+                Math.floor(
+                    diff / DAY
+                );
 
-
-            /*
-            Remove os dias completos
-            */
 
             diff -=
                 days * DAY;
@@ -655,7 +677,9 @@
             */
 
             const hours =
-                Math.floor(diff / HOUR);
+                Math.floor(
+                    diff / HOUR
+                );
 
 
             diff -=
@@ -669,7 +693,9 @@
             */
 
             const minutes =
-                Math.floor(diff / MINUTE);
+                Math.floor(
+                    diff / MINUTE
+                );
 
 
             diff -=
@@ -683,12 +709,14 @@
             */
 
             const seconds =
-                Math.floor(diff / 1000);
+                Math.floor(
+                    diff / 1000
+                );
 
 
             /*
             --------------------------------------------------
-            ATUALIZA A TELA
+            ATUALIZAÇÃO
             --------------------------------------------------
             */
 
@@ -725,28 +753,18 @@
 
     <!-- =====================================================
          CLOUDFLARE WEB ANALYTICS
+         =====================================================
 
-         ATENÇÃO:
+         VAMOS INSTALAR DEPOIS.
+
+         O Cloudflare vai fornecer o snippet específico
+         contendo o token do seu site.
 
          NÃO coloque um token inventado aqui.
 
-         Depois de criar o site no Cloudflare Web Analytics,
-         substitua o trecho abaixo pelo snippet fornecido
-         pelo próprio Cloudflare.
-
-         Exemplo oficial:
-
-         <script
-             type="module"
-             src="https://static.cloudflareinsights.com/beacon.min.js"
-             data-cf-beacon='{"token":"SEU_TOKEN"}'>
-         </script>
-
-         O Cloudflare orienta colocar esse snippet antes
-         da tag </body>.
+         O snippet será inserido ANTES do </body>.
          ===================================================== -->
 
-    <!-- COLE AQUI O SNIPPET DO CLOUDFLARE -->
 
 </body>
 
